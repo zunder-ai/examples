@@ -52,25 +52,20 @@ await fsp.writeFile(
 const names = ${stringify([...names])}
 
 export default function middleware(req) {
-  const forced = req.url.match(/\?force=(.*)$/)?.[1]
   const hostname = req.headers.get('host')
-  const path = new URL(req.url).pathname.split('/')[1]
-  const subdomain = forced || req.headers.get('cookie')?.match(/forced=([^;]*)(;|$)/)?.[1] || path
+  const url = new URL(req.url)
+  const path = url.pathname.split('/')[1]
 
-  if (names.includes(subdomain)) {
+  if (hostname === 'examples.zunder.ai' && names.includes(path)) {
     const response = new Response()
-    const url = new URL(req.url)
-    response.headers.set('x-middleware-rewrite', '/' + subdomain + url.pathname.replace(`/ ${ subdomain }`, ''))
-    if (forced) {
-      response.headers.set('set-cookie', \`forced=$\{forced}\`)
-    }
+    response.headers.set('x-middleware-rewrite', url.pathname)
     return response
   }
 
   return new Response(null, {
     status: 307,
     headers: {
-      Location: 'https://nuxt.com/docs/examples/essentials/hello-world/'
+      Location: 'https://zunder.ai'
     }
   })
 }`
@@ -104,17 +99,6 @@ await fsp.writeFile(
 )
 
 console.log('Successfully built zunder/examples:')
-let index = 0
-const README = await fsp.readFile('README.md', 'utf-8')
-const missingPackages = []
 for (const name of names) {
-  const treeChar = index++ === names.size - 1 ? '└─' : '├─'
-  process.stdout.write(`  ${treeChar} ${name}\n`)
-  if (!README.includes(`https://${name}.example.nuxt.space`)) {
-    missingPackages.push(name)
-  }
-}
-
-if (missingPackages.length) {
-  throw new Error(`Packages not found in README: ${missingPackages.join(', ')}`)
+  console.log(`  - ${name}`)
 }
