@@ -18,7 +18,7 @@ cd zunder-examples
 pnpm install
 ```
 
-## Add Environment Variables
+## Add Environment Variables 
 
 Copy the `.env.example` file to `.env`:
 
