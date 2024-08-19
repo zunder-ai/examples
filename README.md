@@ -1,6 +1,6 @@
 # ZUNDER Examples
 
-[![Zunder AI Logo](/public/zunder_ai_logo_banner.png)](https://github.com/regenrek/zunder-ui)
+[![Zunder AI Logo](/shared/public/zunder_ai_logo_banner.png)](https://github.com/regenrek/zunder-ui)
 
 Zunder Chat AI Starter is a simple starter for building AI Chat Applications, powered by [Zunder UI](https://github.com/regenrek/zunder-ui)
 

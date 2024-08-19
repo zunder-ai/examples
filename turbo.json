@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [
+    ".nuxtrc",
+    "modules/**"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".output/**",
+        ".output/server/node_modules/**",
+        ".vercel/**"
+      ]
+    },
+    "generate": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".output/public/**",
+        ".vercel/**"
+      ]
+    }
+  }
+}
