@@ -2,6 +2,7 @@ import fsp from 'node:fs/promises'
 import { globby } from 'globby'
 import { readPackageJSON } from 'pkg-types'
 import { join, resolve, dirname } from 'pathe'
+import { execSync } from 'child_process'
 
 const stringify = contents => JSON.stringify(contents, null, 2)
 
@@ -21,6 +22,20 @@ await fsp.rm('.vercel/output', { recursive: true, force: true })
 await fsp.mkdir('.vercel/output/static', { recursive: true })
 await fsp.mkdir('.vercel/output/functions', { recursive: true })
 for (const config of packages) {
+  try {
+    // Attempt to build with frozen-lockfile
+    execSync('pnpm install --frozen-lockfile', { cwd: dirname(config), stdio: 'inherit' })
+  } catch (error) {
+    if (error.message.includes('ERR_PNPM_OUTDATED_LOCKFILE')) {
+      console.warn(`Warning: Outdated lockfile detected in ${dirname(config)}. Updating...`)
+      // If frozen-lockfile fails, update the lockfile
+      execSync('pnpm install --no-frozen-lockfile', { cwd: dirname(config), stdio: 'inherit' })
+    } else {
+      // If it's a different error, rethrow it
+      throw error
+    }
+  }
+
   const { name } = await readPackageJSON(resolve(config))
   const output = resolve(config, '../.vercel/output')
   try {
