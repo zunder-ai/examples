@@ -31,7 +31,7 @@ OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 OPENAI_MODEL=<YOUR_OPENAI_API_KEY>
 USE_SIMULATED_CHAT=true # Set to false to use the real OpenAI API
 ```
-
+ 
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
