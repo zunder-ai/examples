@@ -15,8 +15,8 @@ const props = withDefaults(defineProps<{
   nav?: Nav[]
   currentRoute?: boolean
 }>(), {
-  dir: 'nuxt',
-  repo: 'nuxt/examples',
+  dir: 'zunder',
+  repo: 'zunder/examples',
   currentRoute: false,
 })
 
