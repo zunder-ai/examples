@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     // Expose tailwind config with #tailwind-config
     exposeConfig: true
-  }
+  },
 
   compatibilityDate: '2024-07-23'
 })
