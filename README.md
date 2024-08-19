@@ -4,7 +4,6 @@
 
 Zunder Chat AI Examples are simple starters for building AI Chat Applications, powered by [Zunder UI](https://github.com/regenrek/zunder-ui)
 
-
 ## Setup
 
 Make sure to install the dependencies:
