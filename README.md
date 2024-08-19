@@ -1,4 +1,4 @@
-# ZUNDER Chat AI Starter
+# ZUNDER Examples
 
 [![Zunder AI Logo](/public/zunder_ai_logo_banner.png)](https://github.com/regenrek/zunder-ui)
 
