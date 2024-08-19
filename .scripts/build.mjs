@@ -1,7 +1,7 @@
 import fsp from 'node:fs/promises'
 import { globby } from 'globby'
 import { readPackageJSON } from 'pkg-types'
-import { join, resolve } from 'pathe'
+import { join, resolve, dirname } from 'pathe'
 
 const stringify = contents => JSON.stringify(contents, null, 2)
 
@@ -12,7 +12,8 @@ const packages = await globby([
   '!**/.vercel',
   '!**/.output',
 ]).then(r => r.sort())
-const names = new Set()
+
+const paths = new Set()
 
 await fsp.rm('.vercel/output', { recursive: true, force: true })
 
@@ -29,17 +30,18 @@ for (const config of packages) {
     continue
   }
 
-  await fsp.cp(join(output, 'static'), `.vercel/output/static/${name}`, {
+  const relativePath = dirname(config).replace('examples/', '')
+  await fsp.cp(join(output, 'static'), `.vercel/output/static/${relativePath}`, {
     recursive: true,
   })
   await fsp.cp(
     join(output, 'functions/__nitro.func'),
-    `.vercel/output/functions/${name}.func`,
+    `.vercel/output/functions/${relativePath.replace('/', '-')}.func`,
     {
       recursive: true,
     }
   )
-  names.add(name)
+  paths.add(relativePath)
 }
 
 // Create middleware
@@ -49,14 +51,14 @@ await fsp.mkdir('.vercel/output/functions/_middleware.func', {
 await fsp.writeFile(
   '.vercel/output/functions/_middleware.func/index.js',
   `
-const names = ${stringify([...names])}
+const paths = ${stringify([...paths])}
 
 export default function middleware(req) {
   const hostname = req.headers.get('host')
   const url = new URL(req.url)
-  const path = url.pathname.split('/')[1]
+  const path = url.pathname.slice(1)
 
-  if (hostname === 'examples.zunder.ai' && names.includes(path)) {
+  if (hostname === 'examples.zunder.ai' && paths.some(p => path.startsWith(p))) {
     const response = new Response()
     response.headers.set('x-middleware-rewrite', url.pathname)
     return response
@@ -90,15 +92,15 @@ await fsp.writeFile(
       {
         handle: 'filesystem',
       },
-      ...[...names].map(name => ({
-        src: `/${name}(/.*)?`,
-        dest: `/${name}`,
+      ...[...paths].map(path => ({
+        src: `/${path}(/.*)?`,
+        dest: `/${path}`,
       })),
     ],
   })
 )
 
 console.log('Successfully built zunder/examples:')
-for (const name of names) {
-  console.log(`  - ${name}`)
+for (const path of paths) {
+  console.log(`  - ${path}`)
 }
