@@ -88,7 +88,7 @@ await fsp.writeFile(
         handle: 'filesystem',
       },
       ...[...paths].map(path => ({
-        src: `/${path}(/.*)?`,
+        src: `/${path}(/.*)`,
         dest: `/${path}`,
       })),
     ],
