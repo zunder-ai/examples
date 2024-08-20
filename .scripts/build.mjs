@@ -1,6 +1,6 @@
 import fsp from 'node:fs/promises'
 import { globby } from 'globby'
-import { resolve, dirname } from 'pathe'
+import { resolve, dirname, join } from 'path'
 
 const packages = await globby([
   'examples/**/package.json',
@@ -25,10 +25,10 @@ for (const config of packages) {
   }
 
   const relativePath = dirname(config).replace('examples/', '')
-  await fsp.cp(join(output, 'static'), `.vercel/output/static/${relativePath}`, { recursive: true })
+  await fsp.cp(join(output, 'static'), join('.vercel/output/static', relativePath), { recursive: true })
   await fsp.cp(
     join(output, 'functions/__nitro.func'),
-    `.vercel/output/functions/${relativePath.replace('/', '-')}.func`,
+    join('.vercel/output/functions', `${relativePath.replace('/', '-')}.func`),
     { recursive: true }
   )
   paths.add(relativePath)
