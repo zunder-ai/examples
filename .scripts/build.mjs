@@ -34,17 +34,23 @@ for (const config of packages) {
   paths.add(relativePath)
 }
 
-// Create simplified config.json
+// Create simplified config.json with adjusted routing
 await fsp.writeFile(
   '.vercel/output/config.json',
   JSON.stringify({
     version: 3,
     routes: [
       { handle: 'filesystem' },
-      ...[...paths].map(path => ({
-        src: `/${path}(/.*)?`,
-        dest: `/${path}`,
-      })),
+      ...[...paths].flatMap(path => [
+        {
+          src: `/${path}`,
+          dest: `/${path.replace('/', '-')}`
+        },
+        {
+          src: `/${path}/(.*)`,
+          dest: `/${path.replace('/', '-')}`
+        }
+      ]),
       { src: '/(.*)', status: 307, headers: { Location: 'https://zunder.ai' } },
     ],
   }, null, 2)
