@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/chat/basic/'
+    baseURL: '/chat/hello-world/'
   },
 
   compatibilityDate: '2024-08-20'
