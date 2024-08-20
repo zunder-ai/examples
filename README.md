@@ -25,7 +25,7 @@ Copy the `.env.example` file to `.env`:
 ```bash
 cp .env.example .env
 ```
-
+ 
 ```bash
 OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 OPENAI_MODEL=<YOUR_OPENAI_API_KEY>
