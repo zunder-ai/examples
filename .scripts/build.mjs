@@ -28,7 +28,7 @@ for (const config of packages) {
   await fsp.cp(join(output, 'static'), join('.vercel/output/static', relativePath), { recursive: true })
   await fsp.cp(
     join(output, 'functions/__nitro.func'),
-    join('.vercel/output/functions', `${relativePath.replace('/', '-')}.func`),
+    join('.vercel/output/functions', `${relativePath}.func`),
     { recursive: true }
   )
   paths.add(relativePath)
