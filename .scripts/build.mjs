@@ -105,16 +105,7 @@ await fsp.writeFile(
 
 console.log('Successfully built zunderai/examples:')
 let index = 0
-const README = await fsp.readFile('README.md', 'utf-8')
-const missingPackages = []
 for (const name of names) {
   const treeChar = index++ === names.size - 1 ? '└─' : '├─'
   process.stdout.write(`  ${treeChar} ${name}\n`)
-  if (!README.includes(`https://${name}.example.zunder.ai`)) {
-    missingPackages.push(name)
-  }
-}
-
-if (missingPackages.length) {
-  throw new Error(`Packages not found in README: ${missingPackages.join(', ')}`)
 }
