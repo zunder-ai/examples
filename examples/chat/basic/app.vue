@@ -1,19 +1,31 @@
+<script setup lang="ts">
+useHead({
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+  ],
+  link: [
+    { rel: 'icon', href: '/favicon.ico' }
+  ],
+  htmlAttrs: {
+    lang: 'en'
+  }
+})
+
+const title = 'ZUNDER - Chat AI Starter'
+const description = 'ZUNDER is a chat AI starter kit for building chat applications'
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: 'https://dashboard-template.nuxt.dev/social-card.png',
+  twitterImage: 'https://dashboard-template.nuxt.dev/social-card.png',
+  twitterCard: 'summary_large_image'
+})
+
+</script>
 <template>
-    <div class="dark:bg-gray-800 dark:text-gray-200 min-h-screen">
-      <Head>
-        <Title>Zunder Basic Chat Example</Title>
-      </Head>
-      <p class="p-4 pb-2">
-        <select
-          v-model="$colorMode.preference"
-          class="border w-24 h-8 dark:bg-gray-900 dark:text-white dark:border-gray-700"
-        >
-          <option value="system">System</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </p>
-      <NuxtPage class="mx-auto p-4" />
-    </div>
-  </template>
-  
+    <NuxtPage />
+</template>

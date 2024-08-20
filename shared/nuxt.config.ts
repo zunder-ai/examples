@@ -1,6 +1,12 @@
 export default defineNuxtConfig({
+
+  devtools: {
+    enabled: true,
+  },
+
   modules: [
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@zunderai/ui'
   ],
 
   ui: {
