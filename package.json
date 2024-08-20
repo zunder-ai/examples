@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "turbo run build && node .scripts/build.mjs",
+    "build": "turbo run build --no-cache && node .scripts/build.mjs",
     "dev": "turbo run dev --parallel",
     "dev:chat-basic": "nuxi dev examples/chat/basic",
     "dev:chat-advanced": "nuxi dev examples/chat/advanced"
