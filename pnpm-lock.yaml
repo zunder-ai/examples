@@ -17,9 +17,6 @@ importers:
       '@nuxt/ui':
         specifier: ^2.18.4
         version: 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.1(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
-      '@zunderai/ui':
-        specifier: ^0.1.2
-        version: 0.1.2(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.1(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
     devDependencies:
       '@nuxt/kit':
         specifier: 3.12.2
@@ -1280,9 +1277,6 @@ packages:
 
   '@vueuse/shared@10.11.1':
     resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
-
-  '@zunderai/ui@0.1.2':
-    resolution: {integrity: sha512-GtYrWqBbc1D9yV7b/UZUYMnHsRGO4eCt9oo7PH3ZN+VMjnC6k45oJPteD7xBH4/E6C5twItUCgmyPC9UpS/EtA==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -5114,51 +5108,6 @@ snapshots:
       vue-demi: 0.14.10(vue@3.4.38)
     transitivePeerDependencies:
       - '@vue/composition-api'
-      - vue
-
-  '@zunderai/ui@0.1.2(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.1(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)':
-    dependencies:
-      '@headlessui/tailwindcss': 0.2.1(tailwindcss@3.4.10)
-      '@headlessui/vue': 1.7.22(vue@3.4.38)
-      '@iconify-json/heroicons': 1.1.24
-      '@nuxt/icon': 1.4.5(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.1(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
-      '@nuxt/kit': 3.12.2(magicast@0.3.4)(rollup@4.21.0)
-      '@nuxtjs/color-mode': 3.4.4(magicast@0.3.4)(rollup@4.21.0)
-      '@nuxtjs/tailwindcss': 6.12.1(magicast@0.3.4)(rollup@4.21.0)
-      '@popperjs/core': 2.11.8
-      '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.10)
-      '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.10)
-      '@tailwindcss/forms': 0.5.7(tailwindcss@3.4.10)
-      '@tailwindcss/typography': 0.5.14(tailwindcss@3.4.10)
-      '@vueuse/core': 10.11.1(vue@3.4.38)
-      '@vueuse/integrations': 10.11.1(fuse.js@6.6.2)(vue@3.4.38)
-      '@vueuse/math': 10.11.1(vue@3.4.38)
-      defu: 6.1.4
-      fuse.js: 6.6.2
-      ohash: 1.1.3
-      pathe: 1.1.2
-      scule: 1.3.0
-      tailwind-merge: 2.5.2
-      tailwindcss: 3.4.10
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - async-validator
-      - axios
-      - change-case
-      - drauu
-      - focus-trap
-      - idb-keyval
-      - jwt-decode
-      - magicast
-      - nprogress
-      - qrcode
-      - rollup
-      - sortablejs
-      - supports-color
-      - ts-node
-      - uWebSockets.js
-      - universal-cookie
-      - vite
       - vue
 
   abbrev@1.1.1: {}
