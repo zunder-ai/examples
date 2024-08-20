@@ -54,22 +54,17 @@ await fsp.writeFile(
 const paths = ${stringify([...paths])}
 
 export default function middleware(req) {
-  const hostname = req.headers.get('host')
   const url = new URL(req.url)
   const path = url.pathname.slice(1)
 
-  if (hostname === 'examples.zunder.ai' && paths.some(p => path.startsWith(p))) {
+  if (paths.some(p => path.startsWith(p))) {
     const response = new Response()
     response.headers.set('x-middleware-rewrite', url.pathname)
     return response
   }
 
-  return new Response(null, {
-    status: 307,
-    headers: {
-      Location: 'https://zunder.ai'
-    }
-  })
+  // Redirect to zunder.ai instead of returning 404
+  return Response.redirect('https://zunder.ai', 307)
 }`
 )
 await fsp.writeFile(
