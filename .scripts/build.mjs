@@ -44,14 +44,13 @@ await fsp.writeFile(
       ...[...paths].flatMap(path => [
         {
           src: `/${path}`,
-          dest: `/${path.replace('/', '-')}`
+          dest: `/${path}`
         },
         {
           src: `/${path}/(.*)`,
-          dest: `/${path.replace('/', '-')}`
+          dest: `/${path}/$1`
         }
       ]),
-      { src: '/(.*)', status: 307, headers: { Location: 'https://zunder.ai' } },
     ],
   }, null, 2)
 )
