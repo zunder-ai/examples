@@ -12,12 +12,14 @@
       "outputs": [
         ".output/**",
         ".output/server/node_modules/**",
-        ".vercel/**"
+        ".vercel/**",
+        "dist/**",
+        ".nuxt/**"
       ]
     },
     "generate": {
       "dependsOn": [
-        "^build"
+        "^generate"
       ],
       "outputs": [
         ".output/public/**",
