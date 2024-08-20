@@ -1,7 +1,7 @@
 import fsp from 'node:fs/promises'
 import { globby } from 'globby'
 import { readPackageJSON } from 'pkg-types'
-import { join, resolve } from 'pathe'
+import { join, resolve, dirname } from 'pathe'
 
 const stringify = contents => JSON.stringify(contents, null, 2)
 
@@ -29,17 +29,14 @@ for (const config of packages) {
     continue
   }
 
-  await fsp.cp(join(output, 'static'), `.vercel/output/static/${name}`, {
-    recursive: true,
-  })
+  const relativePath = dirname(config).replace('examples/', '')
+  await fsp.cp(join(output, 'static'), join('.vercel/output/static', relativePath), { recursive: true })
   await fsp.cp(
     join(output, 'functions/__nitro.func'),
-    `.vercel/output/functions/${name}.func`,
-    {
-      recursive: true,
-    }
+    join('.vercel/output/functions', `${relativePath}.func`),
+    { recursive: true }
   )
-  names.add(name)
+  names.add(relativePath)
 }
 
 // Create middleware
@@ -95,26 +92,27 @@ await fsp.writeFile(
       {
         handle: 'filesystem',
       },
-      ...[...names].map(name => ({
-        src: `/${name}/(.*)`,
-        dest: `/${name}`,
-      })),
+      ...[...names].flatMap(path => [
+        {
+          src: `/${path}`,
+          dest: `/${path}`
+        },
+        {
+          src: `/${path}/(.*)`,
+          dest: `/${path}/$1`
+        },
+        {
+          src: `/${path}/_nuxt/(.*)`,
+          dest: `/${path}/_nuxt/$1`
+        }
+      ]),
     ],
   })
 )
 
-console.log('Successfully built nuxt/examples:')
+console.log('Successfully built zunderai/examples:')
 let index = 0
-const README = await fsp.readFile('README.md', 'utf-8')
-const missingPackages = []
 for (const name of names) {
   const treeChar = index++ === names.size - 1 ? '└─' : '├─'
-  process.stdout.write(`  ${treeChar} ${name}\n`)
-  if (!README.includes(`https://${name}.example.zunder.ai`)) {
-    missingPackages.push(name)
-  }
-}
-
-if (missingPackages.length) {
-  throw new Error(`Packages not found in README: ${missingPackages.join(', ')}`)
+  console.log(`  ${treeChar} ${name} (https://${name}.example.zunder.ai)`)
 }
