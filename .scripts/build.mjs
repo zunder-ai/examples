@@ -44,11 +44,11 @@ await fsp.writeFile(
       ...[...paths].flatMap(path => [
         {
           src: `/${path}`,
-          dest: `/${path}`
+          dest: `/${path.replace('/', '-')}`
         },
         {
           src: `/${path}/(.*)`,
-          dest: `/${path}/$1`
+          dest: `/${path.replace('/', '-')}`
         }
       ]),
     ],
