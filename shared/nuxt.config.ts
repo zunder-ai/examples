@@ -5,8 +5,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@nuxt/ui',
-    '@zunderai/ui'
+    '@nuxt/ui'
   ],
 
   ui: {

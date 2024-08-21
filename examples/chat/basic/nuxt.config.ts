@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@zunderai/ui'],
+  extends: ['@zunderai/ui'],
+  modules: ['@nuxt/ui'],
   colorMode: {
     classSuffix: '',
   },

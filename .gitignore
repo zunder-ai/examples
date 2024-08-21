@@ -1,4 +1,5 @@
 # Dependencies
+.examples
 node_modules
 jspm_packages
 .pnpm-store
