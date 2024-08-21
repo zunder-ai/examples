@@ -14,7 +14,6 @@
         "nuxt": "^3.12.2"
     },
     "dependencies": {
-        "@nuxt/ui": "^2.18.4",
-        "@zunderai/ui": "^0.1.4"
+        "@nuxt/ui": "^2.18.4"
     }
 }
