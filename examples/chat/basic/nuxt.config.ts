@@ -10,8 +10,8 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    openaiApiKey: process.env.OPENAI_API_KEY,
-    openaiModel: process.env.OPENAI_MODEL,
+    openaiApiKey: process.env.OPENAI_API_KEY || "",
+    openaiModel: process.env.OPENAI_MODEL || "",
     public: {
       useSimulatedChat: process.env.USE_SIMULATED_CHAT === "true",
     },
