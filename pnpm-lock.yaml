@@ -17,6 +17,9 @@ importers:
       '@nuxt/ui':
         specifier: ^2.18.4
         version: 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
+      '@zunderai/ui':
+        specifier: ^0.1.4
+        version: 0.1.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
     devDependencies:
       '@nuxt/kit':
         specifier: 3.12.4
@@ -38,6 +41,13 @@ importers:
         version: 2.0.14
 
   examples/chat/basic:
+    dependencies:
+      '@nuxt/ui':
+        specifier: ^2.18.4
+        version: 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
+      '@zunderai/ui':
+        specifier: ^0.1.4
+        version: 0.1.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
     devDependencies:
       '@nuxtjs/color-mode':
         specifier: ^3.4.1
@@ -45,27 +55,6 @@ importers:
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.0
         version: 6.12.1(magicast@0.3.4)(rollup@4.21.0)
-      nuxt:
-        specifier: ^3.12.2
-        version: 3.12.4(@parcel/watcher@2.4.1)(@types/node@20.16.1)(ioredis@5.4.1)(magicast@0.3.4)(rollup@4.21.0)(terser@5.31.6)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))
-
-  examples/chat/basic2:
-    devDependencies:
-      '@nuxtjs/color-mode':
-        specifier: ^3.4.1
-        version: 3.4.4(magicast@0.3.4)(rollup@4.21.0)
-      '@nuxtjs/tailwindcss':
-        specifier: ^6.12.0
-        version: 6.12.1(magicast@0.3.4)(rollup@4.21.0)
-      nuxt:
-        specifier: ^3.12.2
-        version: 3.12.4(@parcel/watcher@2.4.1)(@types/node@20.16.1)(ioredis@5.4.1)(magicast@0.3.4)(rollup@4.21.0)(terser@5.31.6)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))
-
-  examples/chat/hello-world:
-    devDependencies:
-      '@nuxt/examples-ui':
-        specifier: latest
-        version: 0.0.2(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
       nuxt:
         specifier: ^3.12.2
         version: 3.12.4(@parcel/watcher@2.4.1)(@types/node@20.16.1)(ioredis@5.4.1)(magicast@0.3.4)(rollup@4.21.0)(terser@5.31.6)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))
@@ -76,8 +65,11 @@ importers:
         specifier: ^1.1.96
         version: 1.1.114
       '@nuxt/ui':
-        specifier: ^2.17.0
+        specifier: ^2.18.4
         version: 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
+      '@zunderai/ui':
+        specifier: ^0.1.4
+        version: 0.1.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
       openai:
         specifier: ^4.56.0
         version: 4.56.0
@@ -813,9 +805,6 @@ packages:
     peerDependencies:
       vite: '*'
 
-  '@nuxt/examples-ui@0.0.2':
-    resolution: {integrity: sha512-HxzqgUQLy1/gvuHGJSRFrNYteZQEn3mCy9Ni/3h/uJbpxVgyNslUa9dEImYkfvIcq42f6CeyfiGJXoRcPlErDA==}
-
   '@nuxt/icon@1.4.7':
     resolution: {integrity: sha512-POJvQd2JEMX6LEPkvDGxXHfI28r+NFMcdqooLQJBjb9bM7XxeLIrPyGGpSHVqUNTCqUsS38Y1lqAsqKA3e6mVw==}
 
@@ -1306,6 +1295,9 @@ packages:
 
   '@vueuse/shared@10.11.1':
     resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+
+  '@zunderai/ui@0.1.4':
+    resolution: {integrity: sha512-rJND6ojZjjyWYsYqQ8fDw2Wl6zSZxji3cPE0hpRbfCtwlaPARzHZMC2ZPd63uuK6vzOsaDRlYoJMn8SVLzueog==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -4492,31 +4484,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@nuxt/examples-ui@0.0.2(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)':
-    dependencies:
-      '@iconify-json/simple-icons': 1.1.114
-      '@nuxt/ui': 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - async-validator
-      - axios
-      - change-case
-      - drauu
-      - focus-trap
-      - idb-keyval
-      - jwt-decode
-      - magicast
-      - nprogress
-      - qrcode
-      - rollup
-      - sortablejs
-      - supports-color
-      - ts-node
-      - uWebSockets.js
-      - universal-cookie
-      - vite
-      - vue
-
   '@nuxt/icon@1.4.7(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)':
     dependencies:
       '@iconify/collections': 1.0.451
@@ -5203,6 +5170,31 @@ snapshots:
       vue-demi: 0.14.10(vue@3.4.38)
     transitivePeerDependencies:
       - '@vue/composition-api'
+      - vue
+
+  '@zunderai/ui@0.1.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)':
+    dependencies:
+      '@nuxt/kit': 3.12.4(magicast@0.3.4)(rollup@4.21.0)
+      '@nuxt/ui': 2.18.4(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@20.16.1)(terser@5.31.6))(vue@3.4.38)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - async-validator
+      - axios
+      - change-case
+      - drauu
+      - focus-trap
+      - idb-keyval
+      - jwt-decode
+      - magicast
+      - nprogress
+      - qrcode
+      - rollup
+      - sortablejs
+      - supports-color
+      - ts-node
+      - uWebSockets.js
+      - universal-cookie
+      - vite
       - vue
 
   abbrev@1.1.1: {}
