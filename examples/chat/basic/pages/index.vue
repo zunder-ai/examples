@@ -1,4 +1,7 @@
 <template>
+    <div class="grid gap-y-12">
+        <div>AA</div>
+        <div>BB</div>
     <ZChatPage>
         <template #messages>
             <ZChatMessages :messages="chatMessages" />
@@ -6,7 +9,7 @@
         <template #input>
             <ZChatInput @submit="handleSubmit" :loading="loading" placeholder="Type your message here..." />
         </template>
-    </ZChatPage>
+    </ZChatPage></div>
 </template>
 
 <script setup lang="ts">
